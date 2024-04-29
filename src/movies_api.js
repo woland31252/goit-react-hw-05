@@ -8,15 +8,27 @@ const instance = axios.create({
   },
 });
 
-export const fetchMovies = async () => {
-  const response = await instance.get("/trending/movie/week?language=en-US", {
+export const trendingMovies = async () => {
+  const response = await instance.get("/trending/movie/day?language=en-US", {
     // params: {
     //   query: searchQuery,
     //   page: curentPage,
     //   per_page: 12,
     // },
   });
-  return console.log(response.data);
+  // console.log(response.data);
+  return response.data;
+};
+
+export const fetchMovies = async (searchQuery, curentPage) => {
+  const response = await instance.get("/search/movie", {
+    params: {
+      query: searchQuery,
+      page: curentPage,
+      per_page: 12,
+    },
+  });
+  return response.data.results
 };
 
 
