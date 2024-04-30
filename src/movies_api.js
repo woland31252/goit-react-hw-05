@@ -9,14 +9,7 @@ const instance = axios.create({
 });
 
 export const trendingMovies = async () => {
-  const response = await instance.get("/trending/movie/day?language=en-US", {
-    // params: {
-    //   query: searchQuery,
-    //   page: curentPage,
-    //   per_page: 12,
-    // },
-  });
-  // console.log(response.data);
+  const response = await instance.get("/trending/movie/day?language=en-US");
   return response.data;
 };
 
