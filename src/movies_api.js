@@ -20,15 +20,13 @@ export const trendingMovies = async () => {
   return response.data;
 };
 
-export const fetchMovies = async (searchQuery, curentPage) => {
+export const fetchMovies = async (searchQuery) => {
   const response = await instance.get("/search/movie", {
     params: {
       query: searchQuery,
-      page: curentPage,
-      per_page: 12,
     },
   });
-  return response.data.results
+  return response.data
 };
 
 

@@ -1,73 +1,32 @@
-import { useState, useEffect } from 'react'
-import { trendingMovies, fetchMovies } from './movies_api.js'
-import './App.module.css'
+import { Routes, Route, NavLink } from "react-router-dom";
 import HomePage from './pages/HomePage/HomePage.jsx';
-import ErrorMessage from './components/ErrorMessage/ErrorMessage.jsx';
+import clsx from 'clsx';
 import MoviesPage from './pages/MoviesPage/MoviesPage.jsx';
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage.jsx';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
+import css from './App.module.css';
 
-function App() {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [showBtn, setShowBtn] = useState(false);
 
-  const handleSearch = async (newQuery) => {
-    setQuery(newQuery);
-    setPage(1);
-    setMovies([]);
-  }
-     
-  
-  
-  const handleLoadMore = () => {
-      setPage(page+1)
-  }
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
 
-  useEffect(() => { 
-    
-    async function getMovies() {
-      try {
-      const data = await trendingMovies()
-      const trendingData = data.results
-      setMovies(trendingData)
-        
-    } catch (error) {
-      setError(true)
-      }
-      
-    }
-    getMovies();
-
-    if (query === "") {
-      return
-    }
-
-     async function serchMovies() {
-       try {
-        
-         const data = await fetchMovies(query, page);
-         const curentMovies = data.results;
-         setMovies((prevImages) => { return [...prevImages, ...curentMovies] });
-         const totalPages = data.total_pages;
-         setShowBtn(totalPages && totalPages !== page);
-         
-      } catch (error) {
-        setError(true);
-      } 
-     }
-    serchMovies()
-    
-  }, [query, page])
-  
-  console.log(movies)
-  
+const App = () => {
   return (
-    <>
-      {movies.length > 0 && <HomePage movie={movies} />}
-      {error && <ErrorMessage />}
-      <MoviesPage onSearch={handleSearch} onShowBtn={ showBtn} onClick={handleLoadMore}/>
-    </>
+    <div className={css.container}>
+      <nav className={css.link}>
+        <NavLink to="/" className={buildLinkClass}>Home Page</NavLink>
+        <NavLink to="/moviespage" className={buildLinkClass}>Movies Page</NavLink>
+        <NavLink to="/moviedetails" className={buildLinkClass}>Movie Details Page</NavLink>
+      </nav>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/moviespage" element={<MoviesPage />} />
+        <Route path="/moviedetails" element={<MovieDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
+
   )
 }
 

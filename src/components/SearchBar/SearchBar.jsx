@@ -16,13 +16,13 @@ export default function SearchBar({ onSearch }) {
                         }
                         actions.resetForm();}}>
             
-            <header className={css.headerCont}>
+            <div className={css.headerCont}>
                 <Form className={css.form}>
                     <Field className={css.input} type="text" id={id} name="query" autoComplete="off" autoFocus placeholder="Search movies" />
                     <button className={css.button} type="submit"><SlMagnifier className={css.icon} /></button>
                     <Toaster/>
                 </Form>
-            </header>
+            </div>
         </Formik>
     )
 }
