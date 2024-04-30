@@ -57,7 +57,7 @@ export default function MoviesPage() {
         <div className={css.containerMoviePage}>  
             <h2>Movies Page</h2>
             <SearchBar onSearch={handleSearch} />
-            <MovieList movie={ movies} />
+            {movies.length > 0 && <MovieList movie={ movies} />}
             </div>
             {error && <ErrorMessage />}
         </>

@@ -1,0 +1,8 @@
+.movieList {
+    border: 2px solid dimgray;
+    border-radius: 5px;
+    background-color: rgb(241 241 232 / 88%);
+    padding: 12px;
+    margin-top: 18px;
+    width: 700px;
+}

@@ -1,12 +1,11 @@
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import css from '../MovieList/MovieList.module.css'
 
-export default function MovieList({movie, onSowBtn, onClick}) {
+export default function MovieList({movie}) {
     return (
         <>
-           <ul>
-            {movie.map((movies) => (<li key={movies.id}>{movies.title}</li>))}
-            </ul>
-            {onSowBtn && <LoadMoreBtn onClick={onClick}/>}    
+            <ul className={css.movieList}>
+            {movie.map((movies) => (<li className={css.movieItem} key={movies.id}>{movies.title}</li>))}
+            </ul>    
         </>
         
         

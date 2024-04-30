@@ -82,9 +82,7 @@ export default function HomePage () {
                 <h1 className={css.titleHomePage}>Tranding Today</h1>
                 <MovieList movie={ movies} />
             </div>
-            <div>
-                {error && <ErrorMessage />}
-            </div>
+            {error && <ErrorMessage />}
         </>
         
     )
