@@ -17,9 +17,20 @@ export const fetchMovies = async (searchQuery) => {
   const response = await instance.get("/search/movie", {
     params: {
       query: searchQuery,
+      language: "en-US"
     },
   });
   return response.data
 };
 
+export const fetchMoviesId = async (movieId) => {
+  const response = await instance.get(`/search/movie/${movieId}`)
+  //   {
+  //   params: {
+  //     movie_id: movieId,
+  //     language: "en-US"
+  //   },
+  // });
+  return response.data;
+};
 
