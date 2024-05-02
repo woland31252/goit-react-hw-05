@@ -1,0 +1,19 @@
+.listContainer {
+    display: flex;
+    gap: 15px;
+    padding: 50px 30px;
+    border-top: 3px solid rgb(41 57 47 / 40%);
+    box-shadow: inset 0px 0px 13px 5px #b9f5e7;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titleMovie {
+    font-size: 40px;
+    line-height: 1;
+    text-shadow: -4px 5px 6px #eceeb4;
+}
