@@ -33,3 +33,21 @@ export const fetchMoviesId = async (movieId) => {
   return response.data;
 };
 
+export const fetchMovieCredits = async (movieId) => {
+  const response = await instance.get(`/movie/${movieId}/credits`, {
+    params: {
+      language: "en-US",
+    },
+  });
+  return response.data.cast;
+};
+
+export const fetchMovieReviews = async (movieId) => {
+  const response = await instance.get(`/movie/${movieId}/reviews`, {
+    params: {
+      language: "en-US",
+    },
+  });
+  return response.data.results;
+};
+

@@ -1,0 +1,30 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 50px 30px;
+    border-top: 3px solid rgb(41 57 47 / 40%);
+    box-shadow: inset 0px 0px 13px 5px #b9f5e7;
+}
+
+.linkList {
+    border-bottom: 2px solid gray;
+    padding-bottom: 10px;
+}
+
+.inLink {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.inLink:hover {
+    color: #010102;
+}
+
+.active {
+    color: mediumvioletred;
+}

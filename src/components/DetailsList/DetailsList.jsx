@@ -10,7 +10,7 @@ export default function DetailsList({
         genres
 }}) {
     return (
-          <div className={css.listContainer}>
+          <div className={css.detailsList}>
           <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={tagline} />
           <ul className={css.list}>
             <li><h2 className={css.titleMovie}>{title}</h2></li>

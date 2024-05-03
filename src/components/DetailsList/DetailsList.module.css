@@ -1,11 +1,7 @@
-.listContainer {
+.detailsList {
     display: flex;
-    gap: 15px;
-    padding: 50px 30px;
-    border-top: 3px solid rgb(41 57 47 / 40%);
-    box-shadow: inset 0px 0px 13px 5px #b9f5e7;
+    gap: 20px;
 }
-
 .list{
     display: flex;
     flex-direction: column;
