@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { fetchMovies } from "../../movies_api.js";
 import MovieList from "../../components/MovieList/MovieList.jsx";
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
@@ -10,17 +10,17 @@ import css from '../MoviesPage/MoviesPage.module.css';
 
 export default function MoviesPage() {
   const location = useLocation();
+  
    
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
   const [notFound, setNotFound] = useState(false);
 
-
+const params = searchParams.get("query") ?? "";
   const handleSearch = async (newQuery) => {
-    setQuery(newQuery);
-    setMovies([]);
+    setSearchParams({ query: newQuery });
   }
      
   
@@ -29,18 +29,17 @@ export default function MoviesPage() {
 
   useEffect(() => { 
     
-    if (query === "") {
+    if (params === "") {
       return
     }
 
      async function serchMovies() {
        try {
         setIsLoading(true)
-         const data = await fetchMovies(query);
-         const curentMovies = data.results;
-         setNotFound(curentMovies.length === 0)
+        const data = await fetchMovies(params);
+        const curentMovies = data.results;
+        setNotFound(curentMovies.length === 0);
         setMovies(curentMovies);
-
          
       } catch (error) {
         setError(true);
@@ -50,7 +49,7 @@ export default function MoviesPage() {
      }
     serchMovies()
     
-  }, [query])
+  }, [params])
   
 
   
@@ -64,9 +63,10 @@ export default function MoviesPage() {
           {notFound && <NotFound />}
           {movies.length > 0 && <MovieList movie={movies} location={location}/>}
         </div>}
-            {error && <ErrorMessage />}
-            
+          {error && <ErrorMessage />}  
         </>
         
     )
+  
+  
 }
