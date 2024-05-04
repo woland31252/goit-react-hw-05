@@ -27,11 +27,10 @@ export default function MovieCast() {
     
     return (
         <div className={css.castList}>
-            {!error && reviews && reviews.map(data => <div key={data.id}>
-                <img className={ css.castImg} src={`https://image.tmdb.org/t/p/w500${data.profile_path}`} alt="The picture of movie's character" width="100px"/>
+        {!error && reviews && reviews.map(data => <div className={ css.castCard} key={data.id}>
+              {data.profile_path && <img className={css.castImg} src={`https://image.tmdb.org/t/p/w500${data.profile_path}`} alt={data.original_name} width="100px" />}
                 <p className={css.actorTitle}>{data.name}</p>
                 {data.character ? <p className={css.actorTitle}>Character: {data.character}</p> : <p>Character: There is no information</p>}
-                
             </div>)}
             {reviews !== null && reviews.length === 0 && <p className={css.messageItem}>We don't have any data for this movie</p>}
             {error && <ErrorMessage/>}

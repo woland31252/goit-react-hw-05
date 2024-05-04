@@ -51,9 +51,6 @@ const params = searchParams.get("query") ?? "";
     
   }, [params])
   
-
-  
-
     return (
         <>
         {!error && <div className={css.containerMoviePage}>
@@ -64,9 +61,6 @@ const params = searchParams.get("query") ?? "";
           {movies.length > 0 && <MovieList movie={movies} location={location}/>}
         </div>}
           {error && <ErrorMessage />}  
-        </>
-        
+        </> 
     )
-  
-  
 }

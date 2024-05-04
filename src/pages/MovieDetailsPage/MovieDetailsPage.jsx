@@ -23,18 +23,12 @@ export default function MovieDetailsPage() {
 
   useEffect(() => { 
     
-    // if (query === "") {
-    //   return
-    // }
-
      async function searchMoviesId() {
        try {
         
         const data = await fetchMoviesId(movieId);
         setMovies(data)
-        
-
-         
+                 
       } catch (error) {
         setError(true);
       } 
