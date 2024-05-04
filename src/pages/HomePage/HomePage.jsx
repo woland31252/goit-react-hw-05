@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
-import { trendingMovies } from "../../movies_api.js"
-import Loader from '../../components/Loader/Loader.jsx'
+import { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
+import { trendingMovies } from "../../movies_api.js";
+import Loader from '../../components/Loader/Loader.jsx';
 import MovieList from "../../components/MovieList/MovieList.jsx";
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
-import css from '../HomePage/HomePage.module.css'
-export default function HomePage () {
+import css from '../HomePage/HomePage.module.css';
 
-    
+export default function HomePage() {
+
+  const location = useLocation();
 
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
@@ -39,7 +41,7 @@ export default function HomePage () {
             {isLoading && <Loader />}
         {!error && <div className={css.container}>
           <h1 className={css.titleHomePage}>Tranding Today</h1>
-          <MovieList movie={movies} />
+          <MovieList movie={movies} location={location} />
         </div>}
             {error && <ErrorMessage />}
         </>

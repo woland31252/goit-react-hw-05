@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 import DetailsList from '../../components/DetailsList/DetailsList.jsx';
 import ErrorMessage  from "../../components/ErrorMessage/ErrorMessage";
 import { fetchMoviesId } from '../../movies_api.js';
@@ -7,6 +7,9 @@ import css from '../MovieDetailsPage/MovieDetailsPage.module.css';
 
 
 export default function MovieDetailsPage() {
+
+    const location = useLocation();
+    const backLinkRef = useRef(location.state);
     const { movieId } = useParams();
 
     const [movies, setMovies] = useState(null);
@@ -44,6 +47,11 @@ export default function MovieDetailsPage() {
   return (
       <>
       {!error && <div className={css.pageContainer}>
+        <Link to={backLinkRef.current ?? "/movies"}>
+            <button className={css.btn}>
+             GoBack
+            </button>
+          </Link>
         {movies && <DetailsList details={movies} />}
         <ul className={css.linkList}>
           <li >

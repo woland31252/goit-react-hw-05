@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import { fetchMovies } from "../../movies_api.js";
 import MovieList from "../../components/MovieList/MovieList.jsx";
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx';
@@ -8,6 +9,7 @@ import Loader from '../../components/Loader/Loader.jsx';
 import css from '../MoviesPage/MoviesPage.module.css';
 
 export default function MoviesPage() {
+  const location = useLocation();
    
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
@@ -60,7 +62,7 @@ export default function MoviesPage() {
           <SearchBar onSearch={handleSearch} />
           {isLoading && <Loader />}
           {notFound && <NotFound />}
-          {movies.length > 0 && <MovieList movie={movies} />}
+          {movies.length > 0 && <MovieList movie={movies} location={location}/>}
         </div>}
             {error && <ErrorMessage />}
             
