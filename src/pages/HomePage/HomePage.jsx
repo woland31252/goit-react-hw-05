@@ -37,10 +37,10 @@ export default function HomePage () {
     return (
         <>
             {isLoading && <Loader />}
-            <div className={css.container}>
-                <h1 className={css.titleHomePage}>Tranding Today</h1>
-                <MovieList movie={ movies} />
-            </div>
+        {!error && <div className={css.container}>
+          <h1 className={css.titleHomePage}>Tranding Today</h1>
+          <MovieList movie={movies} />
+        </div>}
             {error && <ErrorMessage />}
         </>
         

@@ -1,0 +1,10 @@
+.errorItem {
+    font-size: 28px;
+    text-align: center;
+}
+
+.errorMessageContainer {
+    width: 100%;
+    height: 600px;
+    padding-top: 80px;
+}

@@ -27,7 +27,7 @@ export default function MovieReviews() {
     
     return (
         <div>
-            {reviews && reviews.map(data => (<div key={data.id}>
+            {!error && reviews && reviews.map(data => (<div key={data.id}>
                 {data.author?<h3 className={css.authorTitle}>AUTHOR: {data.author}</h3>:<p>No data for author</p>}
                 <p className={css.contentItem}>{data.content}</p>
             </div>))}

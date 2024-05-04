@@ -41,20 +41,23 @@ export default function MovieDetailsPage() {
   }, [movieId])
 
 
-    return (
-        <div className={css.pageContainer}>
+  return (
+      <>
+      {!error && <div className={css.pageContainer}>
         {movies && <DetailsList details={movies} />}
         <ul className={css.linkList}>
           <li >
             <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link  to="reviews">Reviews</Link>
+            <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-          <Outlet/>
-          {error && <ErrorMessage/>}
-        </div>
+        <Outlet />
+      </div>}
+      {error && <ErrorMessage/>}
+      </>
+        
         
     )
 }

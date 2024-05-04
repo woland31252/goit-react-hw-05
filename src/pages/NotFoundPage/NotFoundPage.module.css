@@ -1,0 +1,11 @@
+.notFoundPage {
+    width:100%;
+    height: 600px;
+    text-align: center;
+    font-size: 28px;
+    color: crimson;
+    padding-top: 80px;
+}
+.textItemError {
+    font-size: 46px;
+}

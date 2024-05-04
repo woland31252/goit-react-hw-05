@@ -55,14 +55,15 @@ export default function MoviesPage() {
 
     return (
         <>
-        <div className={css.containerMoviePage}>  
-            <h2>Movies Page</h2>
-            <SearchBar onSearch={handleSearch} />
-            {isLoading && <Loader />}
-            {movies.length > 0 && <MovieList movie={ movies} />}
-            </div>
+        {!error && <div className={css.containerMoviePage}>
+          <h2>Movies Page</h2>
+          <SearchBar onSearch={handleSearch} />
+          {isLoading && <Loader />}
+          {notFound && <NotFound />}
+          {movies.length > 0 && <MovieList movie={movies} />}
+        </div>}
             {error && <ErrorMessage />}
-            {notFound && <NotFound />}
+            
         </>
         
     )
